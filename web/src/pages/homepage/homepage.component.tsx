@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "./homepage.styles.scss"
 import Map from '../../components/map/map.component';
 import Weather from '../../components/weather/weather.component';
+import CoordinateForm from '../../components/coordinates-form/coordinate-form.component';
 
 const Homepage = (): JSX.Element => {
     const [coords, setCoords] = useState<google.maps.LatLngLiteral>({
@@ -11,7 +12,7 @@ const Homepage = (): JSX.Element => {
 
     return (
         <div className='homepage'>
-            <code>{coords.lat} {coords.lng}</code>
+            <CoordinateForm coords={coords} setCoordinates={setCoords}/>
             <Weather/>
             <Map coords={coords} clickHandler={setCoords}/>
         </div>

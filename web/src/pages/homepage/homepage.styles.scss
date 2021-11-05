@@ -1,22 +1,20 @@
 .homepage {
     height: 100%;
     display: grid;
+    row-gap: 25px;
+    column-gap: 25px;
     grid-template-areas: 
     "weather weather weather weather weather" 
     "map map map map coordinates-form"
     "map map map map coordinates-form";
-
-    code {
-        grid-area: coordinates-form;
-    }
 }
 
 @media only screen and (max-width: 800px) {
     .homepage {
         grid-template-areas: 
         "coordinates-form"
-          "weather " 
-          "map";
+        "weather " 
+        "map";
     }
 }
 
