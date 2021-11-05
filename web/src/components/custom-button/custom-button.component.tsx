@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef } from "react";
-import "./custom-button.styles.scss";
+import React, { ComponentPropsWithoutRef } from 'react'
+import './custom-button.styles.scss'
 
 const CustomButton = ({ children, type, ...otherProperties }: ComponentPropsWithoutRef<'button'>): JSX.Element => {
   return (
@@ -10,7 +10,7 @@ const CustomButton = ({ children, type, ...otherProperties }: ComponentPropsWith
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
-export default CustomButton;
+export default CustomButton

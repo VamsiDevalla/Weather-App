@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response, Router } from 'express'
-export const StaticController: Router = Router()
+import { NextFunction, Request, Response, Router } from 'express';
+export const StaticController: Router = Router();
 
-StaticController.get('/', async (req: Request, res: Response, next: NextFunction) => {
+StaticController.get('/', async (request: Request, response: Response, next: NextFunction) => {
   try {
-    res.status(200).send({ data: 'place holder end point for SSR' })
-  } catch (e) {
-    next(e)
+    response.status(200).send({ data: 'place holder end point for SSR' });
+  } catch (error) {
+    next(error);
   }
-})
+});
