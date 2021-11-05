@@ -9,9 +9,11 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.11",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "fast-equals": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -19,6 +21,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@types/google.maps": "^3.46.1",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/node-sass": "^4.11.2",
