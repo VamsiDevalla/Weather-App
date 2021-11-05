@@ -1,37 +1,37 @@
-import React from 'react'
-import FormInput from '../form-input/form-input.component'
+import React from 'react';
+import FormInput from '../form-input/form-input.component';
 
-type CoordProps = {
+type CoordProperties = {
   coords: google.maps.LatLngLiteral;
   setCoordinates: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral>>;
-}
+};
 
-const CoordinateForm = ({ coords, setCoordinates }: CoordProps):JSX.Element => {
+const CoordinateForm = ({ coords, setCoordinates }: CoordProperties): JSX.Element => {
   return (
-        <div className="coordinate-form-container">
-            <h2 className='title'>Coordinates </h2>
-            <form>
-          <FormInput
-            id='lat'
-            handleChange={(e) => setCoordinates({ ...coords, lat: Number(e.target.value) })}
-            label='Latitude'
-            name='lat'
-            type='number'
-            value={coords.lat}
-            required
-          />
-          <FormInput
-            id='lng'
-            label='Longitude'
-            name='lng'
-            type='number'
-            value={coords.lng}
-            required
-            handleChange={(e) => setCoordinates({ ...coords, lng: Number(e.target.value) })}
-          />
-        </form>
-        </div>
-  )
-}
+    <div className='coordinate-form-container'>
+      <h2 className='title'>Coordinates </h2>
+      <form>
+        <FormInput
+          id='lat'
+          handleChange={event_ => setCoordinates({ ...coords, lat: Number(event_.target.value) })}
+          label='Latitude'
+          name='lat'
+          type='number'
+          value={coords.lat}
+          required
+        />
+        <FormInput
+          id='lng'
+          label='Longitude'
+          name='lng'
+          type='number'
+          value={coords.lng}
+          required
+          handleChange={event_ => setCoordinates({ ...coords, lng: Number(event_.target.value) })}
+        />
+      </form>
+    </div>
+  );
+};
 
-export default CoordinateForm
+export default CoordinateForm;

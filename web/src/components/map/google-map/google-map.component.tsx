@@ -1,54 +1,52 @@
-import React, { useEffect, useRef, PropsWithChildren, cloneElement, isValidElement, Children, useState } from 'react'
-import { useDeepCompareEffectForMaps } from './google-map.utils'
+import React, { useEffect, useRef, PropsWithChildren, cloneElement, isValidElement, Children, useState } from 'react';
+import { useDeepCompareEffectForMaps } from './google-map.utils';
 
-interface MapProps extends google.maps.MapOptions {
+interface MapProperties extends google.maps.MapOptions {
   style: { [key: string]: string };
-  onClick?: (e: google.maps.MapMouseEvent) => void;
+  onClick?: (event_: google.maps.MapMouseEvent) => void;
   onIdle?: (map: google.maps.Map) => void;
 }
 
-const GoogleMap = ({ onClick, onIdle, children, style, ...options }: PropsWithChildren<MapProps>): JSX.Element => {
-  const mapElementRef = useRef<HTMLDivElement>(null)
-  const [map, setMap] = useState<google.maps.Map>()
+const GoogleMap = ({ onClick, onIdle, children, style, ...options }: PropsWithChildren<MapProperties>): JSX.Element => {
+  const mapElementReference = useRef<HTMLDivElement>(null);
+  const [map, setMap] = useState<google.maps.Map>();
 
   useEffect(() => {
-    if (mapElementRef.current && !map) {
-      setMap(new window.google.maps.Map(mapElementRef.current, {}))
+    if (mapElementReference.current && !map) {
+      setMap(new window.google.maps.Map(mapElementReference.current, {}));
     }
-  }, [mapElementRef, map])
+  }, [mapElementReference, map]);
 
   useDeepCompareEffectForMaps(() => {
     if (map) {
-      map.setOptions(options)
+      map.setOptions(options);
     }
-  }, [map, options])
+  }, [map, options]);
 
   React.useEffect(() => {
     if (map) {
-      ['click', 'idle'].forEach((eventName) =>
-        google.maps.event.clearListeners(map, eventName)
-      )
+      for (const eventName of ['click', 'idle']) google.maps.event.clearListeners(map, eventName);
 
       if (onClick) {
-        map.addListener('click', onClick)
+        map.addListener('click', onClick);
       }
 
       if (onIdle) {
-        map.addListener('idle', () => onIdle(map))
+        map.addListener('idle', () => onIdle(map));
       }
     }
-  }, [map, onClick, onIdle])
+  }, [map, onClick, onIdle]);
 
   return (
-        <>
-            <div ref={mapElementRef} style={style} />
-            {Children.map(children, (child) => {
-              if (isValidElement(child)) {
-                return cloneElement(child, { map })
-              }
-            })}
-       </>
-  )
-}
+    <>
+      <div ref={mapElementReference} style={style} />
+      {Children.map(children, child => {
+        if (isValidElement(child)) {
+          return cloneElement(child, { map });
+        }
+      })}
+    </>
+  );
+};
 
-export default GoogleMap
+export default GoogleMap;
