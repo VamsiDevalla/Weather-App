@@ -1,5 +1,22 @@
 .homepage {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    height: 100%;
+    display: grid;
+    grid-template-areas: 
+    "weather weather weather weather weather" 
+    "map map map map coordinates-form"
+    "map map map map coordinates-form";
+
+    code {
+        grid-area: coordinates-form;
+    }
 }
+
+@media only screen and (max-width: 800px) {
+    .homepage {
+        grid-template-areas: 
+        "coordinates-form"
+          "weather " 
+          "map";
+    }
+}
+
