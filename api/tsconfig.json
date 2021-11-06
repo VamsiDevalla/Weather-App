@@ -17,6 +17,6 @@
         "forceConsistentCasingInFileNames": true
     },
     "lib": ["es2015"],
-    "include": ["src/**/*", "src/weather/weather.model.ts"],
-    "exclude": ["node_modules"]
+    "include": ["src/**/*", "src/weather/weather.model.ts", "src/weather/test-data", "src/weather/weather.handler.tests.ts"],
+    "exclude": ["node_modules", "src/**/*.test.ts", "src/**/*.mocks.ts"]
 }

@@ -15,6 +15,8 @@ const Weather = ({ coords }: WeatherProperties): JSX.Element => {
   const [error, setError] = useState<boolean>(false);
   const getWeather = useCallback(async () => {
     try {
+      setLoading(true);
+      setError(false);
       setWeather(await weatherService(coords));
     } catch {
       setError(true);
@@ -23,8 +25,6 @@ const Weather = ({ coords }: WeatherProperties): JSX.Element => {
   }, [coords]);
 
   useEffect(() => {
-    setError(false);
-    setLoading(true);
     getWeather();
   }, [getWeather]);
 

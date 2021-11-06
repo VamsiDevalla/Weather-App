@@ -1,10 +1,8 @@
-import { NextFunction, Request, Response, Router } from 'express';
-export const StaticController: Router = Router();
+import { Router } from 'express';
+import { sendHtml } from './static.handler';
 
-StaticController.get('/', async (request: Request, response: Response, next: NextFunction) => {
-  try {
-    response.status(200).send({ data: 'place holder end point for SSR' });
-  } catch (error) {
-    next(error);
-  }
-});
+const StaticController: Router = Router();
+
+StaticController.get('/', sendHtml);
+
+export default StaticController;

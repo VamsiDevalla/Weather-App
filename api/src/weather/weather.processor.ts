@@ -2,8 +2,8 @@ import CurrentConditions from './current-conditions/current-conditons.model';
 import LocationInfo from './location-info/location-info.model';
 import WeatherInfo from './weather.model';
 
-export default (locInfo: LocationInfo, currentCond: CurrentConditions): WeatherInfo => {
-  const rest = {
+export const processWeather = (locInfo: LocationInfo, currentCond: CurrentConditions): WeatherInfo => {
+  return {
     City: locInfo.ParentCity?.EnglishName || 'unknown',
     Area: locInfo.LocalizedName || 'unknown',
     Country: locInfo.Country?.EnglishName || 'unknown',
@@ -16,5 +16,4 @@ export default (locInfo: LocationInfo, currentCond: CurrentConditions): WeatherI
     FeelsLike: currentCond.RealFeelTemperature,
     Visibility: currentCond.Visibility,
   };
-  return rest;
 };

@@ -54,16 +54,16 @@ export default interface LocationInfo {
   Key: string;
   Type: string;
   Rank: number;
-  LocalizedName: string;
+  LocalizedName?: string;
   EnglishName: string;
-  PrimaryPostalCode: string;
+  PrimaryPostalCode?: string;
   Region: RegionOrCountry;
-  Country: RegionOrCountry;
+  Country?: RegionOrCountry;
   AdministrativeArea: AdministrativeArea;
   TimeZone: TimeZone;
   GeoPosition: GeoPosition;
   IsAlias: boolean;
-  ParentCity: ParentCity;
+  ParentCity?: ParentCity;
   SupplementalAdminAreas?: SupplementalAdminAreasEntity[] | null;
   DataSets?: string[] | null;
 }

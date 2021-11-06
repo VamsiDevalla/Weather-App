@@ -50,7 +50,7 @@ export interface TemperatureSummary {
 export default interface CurrentConditions {
   LocalObservationDateTime: string;
   EpochTime: number;
-  WeatherText: string;
+  WeatherText?: string;
   WeatherIcon: number;
   HasPrecipitation: boolean;
   PrecipitationType?: null;
@@ -58,13 +58,13 @@ export default interface CurrentConditions {
   Temperature: MetricSystems;
   RealFeelTemperature: MetricSystems;
   RealFeelTemperatureShade: MetricSystems;
-  RelativeHumidity: number;
+  RelativeHumidity?: number;
   IndoorRelativeHumidity: number;
   DewPoint: MetricSystems;
   Wind: Wind;
   WindGust: WindGust;
   UVIndex: number;
-  UVIndexText: string;
+  UVIndexText?: string;
   Visibility: MetricSystems;
   ObstructionsToVisibility: string;
   CloudCover: number;
