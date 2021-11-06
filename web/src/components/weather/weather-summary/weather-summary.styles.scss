@@ -1,0 +1,27 @@
+.weather-summary {
+  padding: 10px;
+  text-align: center;
+  .static-text {
+    font-weight: 400;
+    font-size: 24px;
+  }
+  .location {
+    padding: 10px;
+    font-weight: 600;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+    .weather-summary {
+      .static-text {
+        font-weight: 400;
+        font-size: 20px;
+      }
+      .location {
+        padding: 6px;
+        font-weight: 600;
+        font-size: 30px;
+      }
+    }
+}

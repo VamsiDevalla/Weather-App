@@ -1,5 +1,6 @@
 /* eslint-disable unicorn/no-null */
 import React, { useState } from 'react';
+import './google-map-marker.styles.scss';
 
 const GoogleMapMarker = (options: google.maps.MarkerOptions): null => {
   const [marker, setMarker] = useState<google.maps.Marker>();

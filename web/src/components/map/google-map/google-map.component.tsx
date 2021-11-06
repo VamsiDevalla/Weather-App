@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, PropsWithChildren, cloneElement, isValidElement, Children, useState } from 'react';
 import { useDeepCompareEffectForMaps } from './google-map.utils';
-
+import './google-map.styles.scss';
 interface MapProperties extends google.maps.MapOptions {
   style: { [key: string]: string };
   onClick?: (event_: google.maps.MapMouseEvent) => void;
