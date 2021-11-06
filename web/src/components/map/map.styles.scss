@@ -1,8 +1,18 @@
+@import '../../colors';
+
 .map-container {
   grid-area: map;
   min-width: 325px;
   min-height: 400px;
   flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  .spinner {
+    border: 16px solid $primary-color;
+    border-top: 16px solid background-gradient-mid-color;
+  }
 }
 
 @media only screen and (max-width: 800px) {

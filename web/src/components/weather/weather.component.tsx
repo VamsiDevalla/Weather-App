@@ -2,56 +2,51 @@ import React, { useCallback, useEffect, useState } from 'react';
 import './weather.styles.scss';
 import weatherService from './weather.service';
 import WeatherInfo from './weather.model';
+import WeatherDetails from './weather-details/weather-details.component';
+import WeatherSummary from './weather-summary/weather-summary.component';
+import Spinner from '../lib/spinner/spinner.component';
 type WeatherProperties = {
   coords: google.maps.LatLngLiteral;
 };
 
 const Weather = ({ coords }: WeatherProperties): JSX.Element => {
   const [weather, setWeather] = useState<WeatherInfo>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const getWeather = useCallback(async () => {
     try {
       setWeather(await weatherService(coords));
-    } catch (error) {
-      console.error(error);
+    } catch {
+      setError(true);
     }
+    setLoading(false);
   }, [coords]);
 
   useEffect(() => {
+    setError(false);
+    setLoading(true);
     getWeather();
   }, [getWeather]);
+
   return (
     <div className='weather-widget'>
-      <div className='weather-summary'>
-        <div className='static-text'>Right now in</div>
-        <div className='location'>{`${weather?.Area ?? ''}, ${weather?.City ?? 'unknown city'}`}</div>
-        <div className='static-text'>{`it's' ${weather?.ClimateSummary}`}</div>
-      </div>
-      <div className='weather-group'>
-        <div className='temperature weather-item'>
-          <span className='title'>Temperature : </span>
-          <span className='value'>{`${weather?.Temperature.Imperial.Value} ${weather?.Temperature.Imperial.Unit}`}</span>
-        </div>
-        <div className='feels-like weather-item'>
-          <span className='title'>Feels like :</span>
-          <span className='value'>{`${weather?.FeelsLike.Imperial.Value} ${weather?.FeelsLike.Imperial.Unit}`}</span>
-        </div>
-        <div className='humidity weather-item'>
-          <span className='title'>Humidity : </span>
-          <span className='value'>{weather?.Humidity}</span>
-        </div>
-        <div className='uv-index weather-item'>
-          <span className='title'>UV Index : </span>
-          <span className='value'>{weather?.UvIndexSummary}</span>
-        </div>
-        <div className='wind weather-item'>
-          <span className='title'>Wind :</span>
-          <span className='value'>{`${weather?.Wind.Speed.Imperial.Value} ${weather?.Wind.Speed.Imperial.Unit} ${weather?.Wind.Direction.English}`}</span>
-        </div>
-        <div className='feels-like weather-item'>
-          <span className='title'>Visibility :</span>
-          <span className='value'>{`${weather?.Visibility.Imperial.Value} ${weather?.Visibility.Imperial.Unit}`}</span>
-        </div>
-      </div>
+      {weather && !loading && !error ? (
+        <>
+          <WeatherSummary weather={weather} />
+          <WeatherDetails weather={weather} />
+        </>
+      ) : (
+        ''
+      )}
+      {loading ? (
+        <>
+          <Spinner />
+          <div className='loading-info-message'>Hang on, getting Weather data...🌪🏃‍♂️💨</div>
+        </>
+      ) : (
+        ''
+      )}
+      {error ? <div className='error-info-message'>Sorry!! select different location or try again 😔</div> : ''}
     </div>
   );
 };

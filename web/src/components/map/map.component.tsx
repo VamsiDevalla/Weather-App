@@ -3,6 +3,7 @@ import './map.styles.scss';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import GoogleMap from './google-map/google-map.component';
 import GoogleMapMarker from './google-map-marker/google-map-marker.component';
+import Spinner from '../lib/spinner/spinner.component';
 
 type MapProperties = {
   coords: google.maps.LatLngLiteral;
@@ -12,7 +13,14 @@ type MapProperties = {
 };
 
 const fallBack = (status: Status) => {
-  return <h1>{status}</h1>;
+  switch (status) {
+    case Status.LOADING:
+      return <Spinner />;
+    case Status.FAILURE:
+      return <div>Something went wrong while rendering Google Map</div>;
+    default:
+      return <h1>{status}</h1>;
+  }
 };
 const Map = ({ coords, zoom, coordsHandler, zoomHandler }: MapProperties): JSX.Element => {
   const [center, setCenter] = useState<google.maps.LatLngLiteral>(coords);
