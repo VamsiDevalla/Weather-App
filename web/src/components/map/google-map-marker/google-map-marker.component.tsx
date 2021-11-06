@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-null */
 import React, { useState } from 'react';
 
-const GoogleMapMarker = (options: google.maps.MarkerOptions) => {
+const GoogleMapMarker = (options: google.maps.MarkerOptions): null => {
   const [marker, setMarker] = useState<google.maps.Marker>();
 
   React.useEffect(() => {

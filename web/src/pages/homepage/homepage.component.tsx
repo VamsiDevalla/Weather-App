@@ -13,7 +13,7 @@ const Homepage = (): JSX.Element => {
   return (
     <div className='homepage'>
       <CoordinateForm coords={coords} setCoordinates={setCoords} />
-      <Weather />
+      <Weather coords={coords} />
       <Map coords={coords} clickHandler={setCoords} />
     </div>
   );

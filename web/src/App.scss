@@ -1,6 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Zen+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import './colors';
+
 body {
-  font-family: 'Zen Antique', serif;
+  font-family: 'Roboto Slab', serif;
+  background-color: $secondary-color;
 }
 
 * {
@@ -8,6 +11,13 @@ body {
 }
 
 .App {
+  color: $primary-color;
   height: 100vh;
   padding: 25px;
+}
+
+@media only screen and (max-width: 800px) {
+  .App {
+    padding: 10px;
+  }
 }

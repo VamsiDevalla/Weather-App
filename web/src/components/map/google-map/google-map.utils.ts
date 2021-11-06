@@ -2,6 +2,7 @@
 import { EffectCallback, useEffect, useRef } from 'react';
 import { createCustomEqual } from 'fast-equals';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const isLatLngLiteral = (object: any): object is google.maps.LatLngLiteral => {
   return typeof object === 'object' && Number.isFinite(object.lat) && Number.isFinite(object.lng);
 };
@@ -27,7 +28,7 @@ function useDeepCompareMemoize(value: any) {
   return reference.current;
 }
 
-export const useDeepCompareEffectForMaps = (callback: EffectCallback, dependencies: any[]) => {
+export const useDeepCompareEffectForMaps = (callback: EffectCallback, dependencies: any[]): void => {
   useEffect(
     callback,
     dependencies.map(x => useDeepCompareMemoize(x)),

@@ -1,15 +1,16 @@
-import { Application, Router } from 'express'
-import { StaticController } from './static/static.controller'
-import { WeatherController } from './weather/weather.controller'
+import { Application, Router } from 'express';
+import { StaticController } from './static/static.controller';
+import { WeatherController } from './weather/weather.controller';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const _routes: [string, Router][] = [
   ['/', StaticController],
-  ['/weather', WeatherController]
-]
+  ['/api/weather', WeatherController],
+];
 
 export const routes = (app: Application) => {
-  _routes.forEach((route) => {
-    const [url, controller] = route
-    app.use(url, controller)
-  })
-}
+  for (const route of _routes) {
+    const [url, controller] = route;
+    app.use(url, controller);
+  }
+};

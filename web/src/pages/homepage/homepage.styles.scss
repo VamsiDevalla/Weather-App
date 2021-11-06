@@ -1,20 +1,21 @@
 .homepage {
-    height: 100%;
-    display: grid;
-    row-gap: 25px;
-    column-gap: 25px;
-    grid-template-areas: 
-    "weather weather weather weather weather" 
-    "map map map map coordinates-form"
-    "map map map map coordinates-form";
+  height: 100%;
+  display: grid;
+  row-gap: 10px;
+  column-gap: 10px;
+  grid-template-rows: 1fr 3fr;
+  grid-template-columns: 1fr 1fr 0.7fr;
+  grid-template-areas:
+    'weather weather weather'
+    'map map coordinates-form';
 }
 
 @media only screen and (max-width: 800px) {
-    .homepage {
-        grid-template-areas: 
-        "coordinates-form"
-        "weather " 
-        "map";
-    }
+  .homepage {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'weather'
+      'map'
+      'coordinates-form';
+  }
 }
-

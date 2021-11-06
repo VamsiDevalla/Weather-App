@@ -40,7 +40,7 @@ const Map = ({ coords, clickHandler }: MapProperties): JSX.Element => {
           onClick={onClick}
           onIdle={onIdle}
           zoom={zoom}
-          style={{ flexGrow: '1', height: '100%', width: '100%' }}
+          style={{ flexGrow: '1', height: '100%', width: '100%', borderRadius: '0 0 0 40px' }}
         >
           <GoogleMapMarker position={coords} />
         </GoogleMap>

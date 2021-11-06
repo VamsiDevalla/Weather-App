@@ -1,7 +1,12 @@
 .map-container {
-    grid-area: map;
-    min-width: 325px;
-    min-height: 400px;
-    flex: 1 1 auto;
-    border: 1px solid black;
-} 
+  grid-area: map;
+  min-width: 325px;
+  min-height: 400px;
+  flex: 1 1 auto;
+}
+
+@media only screen and (max-width: 800px) {
+  .map-container > div {
+    border-radius: 0 !important;
+  }
+}

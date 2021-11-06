@@ -1,6 +1,7 @@
 import React from 'react';
-import FormInput from '../form-input/form-input.component';
-
+import CustomButton from '../lib/custom-button/custom-button.component';
+import FormInput from '../lib/form-input/form-input.component';
+import './coordinate-form.styles.scss';
 type CoordProperties = {
   coords: google.maps.LatLngLiteral;
   setCoordinates: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral>>;
@@ -30,6 +31,16 @@ const CoordinateForm = ({ coords, setCoordinates }: CoordProperties): JSX.Elemen
           handleChange={event_ => setCoordinates({ ...coords, lng: Number(event_.target.value) })}
         />
       </form>
+      <CustomButton
+        onClick={() =>
+          setCoordinates({
+            lat: 39.887_710_232_733_696,
+            lng: -75.175_924_301_147_46,
+          })
+        }
+      >
+        RESET
+      </CustomButton>
     </div>
   );
 };

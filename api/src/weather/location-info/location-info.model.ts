@@ -1,4 +1,3 @@
-
 export interface RegionOrCountry {
   ID: string;
   LocalizedName: string;
@@ -65,6 +64,6 @@ export default interface LocationInfo {
   GeoPosition: GeoPosition;
   IsAlias: boolean;
   ParentCity: ParentCity;
-  SupplementalAdminAreas?: (SupplementalAdminAreasEntity)[] | null;
-  DataSets?: (string)[] | null;
+  SupplementalAdminAreas?: SupplementalAdminAreasEntity[] | null;
+  DataSets?: string[] | null;
 }
