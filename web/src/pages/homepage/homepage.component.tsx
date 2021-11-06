@@ -10,11 +10,13 @@ const Homepage = (): JSX.Element => {
     lng: -75.175_924_301_147_46,
   });
 
+  const [zoom, setZoom] = useState<number>(15);
+
   return (
     <div className='homepage'>
-      <CoordinateForm coords={coords} setCoordinates={setCoords} />
+      <CoordinateForm coords={coords} zoom={zoom} setCoordinates={setCoords} setZoom={setZoom} />
       <Weather coords={coords} />
-      <Map coords={coords} clickHandler={setCoords} />
+      <Map coords={coords} coordsHandler={setCoords} zoom={zoom} zoomHandler={setZoom} />
     </div>
   );
 };

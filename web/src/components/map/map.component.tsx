@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import './map.styles.scss';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import GoogleMap from './google-map/google-map.component';
@@ -6,27 +6,28 @@ import GoogleMapMarker from './google-map-marker/google-map-marker.component';
 
 type MapProperties = {
   coords: google.maps.LatLngLiteral;
-  clickHandler: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral>>;
+  zoom: number;
+  coordsHandler: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
+  zoomHandler: Dispatch<SetStateAction<number>>;
 };
 
 const fallBack = (status: Status) => {
   return <h1>{status}</h1>;
 };
-const Map = ({ coords, clickHandler }: MapProperties): JSX.Element => {
-  const [zoom, setZoom] = useState(15); // initial zoom
+const Map = ({ coords, zoom, coordsHandler, zoomHandler }: MapProperties): JSX.Element => {
   const [center, setCenter] = useState<google.maps.LatLngLiteral>(coords);
 
   useEffect(() => setCenter(coords), [coords]);
 
   const onClick = (event_: google.maps.MapMouseEvent) => {
     if (event_.latLng) {
-      clickHandler(event_.latLng.toJSON());
+      coordsHandler(event_.latLng.toJSON());
     }
   };
 
   const onIdle = (m: google.maps.Map) => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    setZoom(m.getZoom()!);
+    zoomHandler(m.getZoom()!);
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     setCenter(m.getCenter()!.toJSON());
   };
