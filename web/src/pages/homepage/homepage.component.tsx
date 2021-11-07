@@ -30,6 +30,7 @@ const Homepage = (): JSX.Element => {
 
   return (
     <div data-testid='homepage-container' className='homepage'>
+      <Weather coords={coords} />
       <CoordinateForm
         coords={coords}
         zoom={zoom}
@@ -37,7 +38,6 @@ const Homepage = (): JSX.Element => {
         setZoom={setZoom}
         initCoords={initCoords}
       />
-      <Weather coords={coords} />
       <Map coords={coords} coordsHandler={setCoords} zoom={zoom} zoomHandler={setZoom} />
     </div>
   );

@@ -12,24 +12,32 @@ type CoordProperties = {
 
 const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: CoordProperties): JSX.Element => {
   return (
-    <div className='coordinate-form-container'>
-      <h2 className='title'>Coordinates </h2>
-      <form>
+    <div data-testid='coordinatesFormContainer' role='' className='coordinate-form-container'>
+      <h2
+        data-testid='coordinatesFormTitle'
+        role='heading'
+        aria-label='coordinates form'
+        id='coordFormTitle'
+        className='title'
+      >
+        Coordinates
+      </h2>
+      <form data-testid='coordinatesForm' aria-labelledby='coordFormTitle'>
         <FormInput
           id='lat'
           handleChange={event_ => setCoordinates({ ...coords, lat: Number(event_.target.value) })}
           label='Latitude'
-          name='lat'
+          name='latitude'
           type='number'
-          value={coords.lat}
+          value={coords.lat.toFixed(2)}
           required
         />
         <FormInput
           id='lng'
           label='Longitude'
-          name='lng'
+          name='longitude'
           type='number'
-          value={coords.lng}
+          value={coords.lng.toFixed(2)}
           required
           handleChange={event_ => setCoordinates({ ...coords, lng: Number(event_.target.value) })}
         />
@@ -46,8 +54,10 @@ const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: C
       <CustomButton
         onClick={() => {
           setCoordinates(initCoords);
-          setZoom(15);
+          setZoom(16);
         }}
+        type='button'
+        aria-label='reset coordinates'
       >
         RESET
       </CustomButton>

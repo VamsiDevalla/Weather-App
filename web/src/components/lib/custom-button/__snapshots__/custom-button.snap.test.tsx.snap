@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Button should render properly for button type button 1`] = `
+<button
+  className="custom-button"
+  data-testid="button"
+  id="test"
+  onClick={[MockFunction]}
+  type="button"
+>
+  Test
+</button>
+`;
+
+exports[`Custom Button should render properly for button type submit 1`] = `
+<button
+  className="custom-button"
+  data-testid="button"
+  id="test"
+  onClick={[MockFunction]}
+  type="submit"
+>
+  Test
+</button>
+`;

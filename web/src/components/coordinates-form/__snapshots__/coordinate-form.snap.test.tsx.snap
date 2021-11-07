@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Coordinates Form should render properly 1`] = `
+<div
+  className="coordinate-form-container"
+  data-testid="coordinatesFormContainer"
+  role=""
+>
+  <h2
+    aria-label="coordinates form"
+    className="title"
+    data-testid="coordinatesFormTitle"
+    id="coordFormTitle"
+    role="heading"
+  >
+    Coordinates
+  </h2>
+  <form
+    aria-labelledby="coordFormTitle"
+    data-testid="coordinatesForm"
+  >
+    <FormInput
+      handleChange={[Function]}
+      id="lat"
+      label="Latitude"
+      name="latitude"
+      required={true}
+      type="number"
+      value="25.00"
+    />
+    <FormInput
+      handleChange={[Function]}
+      id="lng"
+      label="Longitude"
+      name="longitude"
+      required={true}
+      type="number"
+      value="30.00"
+    />
+    <FormInput
+      handleChange={[Function]}
+      id="zoom"
+      label="Zoom"
+      name="zoom"
+      required={true}
+      type="number"
+      value={10}
+    />
+  </form>
+  <CustomButton
+    aria-label="reset coordinates"
+    onClick={[Function]}
+    type="button"
+  >
+    RESET
+  </CustomButton>
+</div>
+`;

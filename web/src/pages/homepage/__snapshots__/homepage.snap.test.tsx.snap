@@ -5,6 +5,14 @@ exports[`Homepage should render correctly 1`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={
+      Object {
+        "lat": 39.887710232733696,
+        "lng": -75.17592430114746,
+      }
+    }
+  />
   <CoordinateForm
     coords={
       Object {
@@ -21,14 +29,6 @@ exports[`Homepage should render correctly 1`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={15}
-  />
-  <Weather
-    coords={
-      Object {
-        "lat": 39.887710232733696,
-        "lng": -75.17592430114746,
-      }
-    }
   />
   <Map
     coords={
@@ -49,6 +49,14 @@ exports[`Homepage should render correctly 2`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={
+      Object {
+        "lat": 10,
+        "lng": 15,
+      }
+    }
+  />
   <CoordinateForm
     coords={
       Object {
@@ -65,14 +73,6 @@ exports[`Homepage should render correctly 2`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={15}
-  />
-  <Weather
-    coords={
-      Object {
-        "lat": 10,
-        "lng": 15,
-      }
-    }
   />
   <Map
     coords={
@@ -93,6 +93,14 @@ exports[`Homepage should render correctly 3`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={
+      Object {
+        "lat": 10,
+        "lng": 15,
+      }
+    }
+  />
   <CoordinateForm
     coords={
       Object {
@@ -109,14 +117,6 @@ exports[`Homepage should render correctly 3`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={10}
-  />
-  <Weather
-    coords={
-      Object {
-        "lat": 10,
-        "lng": 15,
-      }
-    }
   />
   <Map
     coords={
@@ -137,6 +137,9 @@ exports[`Homepage should render correctly 4`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={10}
+  />
   <CoordinateForm
     coords={10}
     initCoords={
@@ -148,9 +151,6 @@ exports[`Homepage should render correctly 4`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={10}
-  />
-  <Weather
-    coords={10}
   />
   <Map
     coords={10}
@@ -166,6 +166,9 @@ exports[`Homepage should render correctly 5`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={10}
+  />
   <CoordinateForm
     coords={10}
     initCoords={
@@ -177,9 +180,6 @@ exports[`Homepage should render correctly 5`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={10}
-  />
-  <Weather
-    coords={10}
   />
   <Map
     coords={10}
@@ -195,6 +195,14 @@ exports[`Homepage should render correctly on navigation permission 1`] = `
   className="homepage"
   data-testid="homepage-container"
 >
+  <Weather
+    coords={
+      Object {
+        "lat": 39.887710232733696,
+        "lng": -75.17592430114746,
+      }
+    }
+  />
   <CoordinateForm
     coords={
       Object {
@@ -211,14 +219,6 @@ exports[`Homepage should render correctly on navigation permission 1`] = `
     setCoordinates={[Function]}
     setZoom={[Function]}
     zoom={15}
-  />
-  <Weather
-    coords={
-      Object {
-        "lat": 39.887710232733696,
-        "lng": -75.17592430114746,
-      }
-    }
   />
   <Map
     coords={
