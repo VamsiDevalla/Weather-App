@@ -13,7 +13,7 @@ const Homepage = (): JSX.Element => {
 
   const [zoom, setZoom] = useState<number>(15);
 
-  const setInitialCordinates = () => {
+  const setInitialCoordinates = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         const userCoords = {
@@ -26,10 +26,10 @@ const Homepage = (): JSX.Element => {
     }
   };
 
-  useEffect(setInitialCordinates, []);
+  useEffect(setInitialCoordinates, []);
 
   return (
-    <div className='homepage'>
+    <div data-testid='homepage-container' className='homepage'>
       <CoordinateForm
         coords={coords}
         zoom={zoom}
