@@ -1,4 +1,3 @@
-import { render } from 'node-sass';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import CoordinateForm from '../../components/coordinates-form/coordinate-form.component';
