@@ -6,6 +6,6 @@ describe('Router', () => {
     const newUse = jest.fn();
     app.use = newUse;
     routes(app);
-    expect(newUse).toHaveBeenCalledTimes(2);
+    expect(newUse).toHaveBeenCalledTimes(1);
   });
 });
