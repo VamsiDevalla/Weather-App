@@ -1,0 +1,32 @@
+version: '3.4'
+services:
+  api:
+    image: weather-api
+    container_name: 'weather-api'
+    build:
+      context: api
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $API_LOCAL_PORT:$API_DOCKER_PORT
+    environment:
+      - SERVE_ON_PORT=$API_DOCKER_PORT
+    networks:
+      - weather
+  
+  web:
+    image: weather-web
+    container_name: 'weather-web'
+    build:
+      context: web
+      args:
+        - CLIENT_API_BASE_URL=$WEB_API_BASE_URL
+      dockerfile: ./Dockerfile
+    ports:
+      - $WEB_LOCAL_PORT:$WEB_DOCKER_PORT
+    networks:
+      - weather 
+
+networks:
+  weather:

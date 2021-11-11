@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:local": "react-scripts start",
+    "build:static": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prebuild": "yarn lint",
     "lint": "eslint --fix src/**/*.{'ts','tsx'}",
-    "prestart": "yarn lint && tsc",
-    "server": "node server/index"
+    "build:ssr": "tsc",
+    "start:ssr": "node /index"
   },
   "proxy": "http://localhost:5000",
   "dependencies": {
