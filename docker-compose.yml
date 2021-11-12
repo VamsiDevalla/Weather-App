@@ -8,8 +8,6 @@ services:
       dockerfile: ./Dockerfile
     restart: unless-stopped
     env_file: ./.env
-    ports:
-      - $API_LOCAL_PORT:$API_DOCKER_PORT
     environment:
       - SERVE_ON_PORT=$API_DOCKER_PORT
     networks:
@@ -23,8 +21,22 @@ services:
       args:
         - CLIENT_API_BASE_URL=$WEB_API_BASE_URL
       dockerfile: ./Dockerfile
+    env_file: ./.env
+    networks:
+      - weather
+  
+  nginx:
+    depends_on:
+      - api
+      - web
+    image: weather-nginx
+    container_name: 'weather-nginx'
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
     ports:
-      - $WEB_LOCAL_PORT:$WEB_DOCKER_PORT
+      - "8080:80"
     networks:
       - weather 
 

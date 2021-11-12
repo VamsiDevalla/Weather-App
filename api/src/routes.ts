@@ -2,7 +2,7 @@ import { Application, Router } from 'express';
 import WeatherController from './weather/weather.controller';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const _routes: [string, Router][] = [['/api/weather', WeatherController]];
+const _routes: [string, Router][] = [['/weather', WeatherController]];
 
 const routes = (app: Application) => {
   for (const route of _routes) {
