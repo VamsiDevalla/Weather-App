@@ -1,0 +1,37 @@
+{
+    "plugins": [
+        ["transform-rename-import",
+         { "original": "^(.+?)\\.scss$", "replacement": "$1.css" }],
+         [
+          "babel-plugin-transform-remove-imports", {
+            "test": "\\.(scss|css)$"
+          }
+        ]
+      ],
+    "presets": [
+        [
+            "@babel/preset-react",
+            {
+              "flow": false,
+              "typescript": true
+            }
+          ],
+          [
+            "@babel/preset-typescript",
+            {
+              "isTSX": true,
+              "allExtensions": true
+            }
+          ],
+          [
+            "@babel/preset-env",
+            {
+              "useBuiltIns": "usage",
+              "corejs": 3
+            }
+          ]
+    ],
+    "ignore": [
+      "**/*.test.tsx"
+    ]
+  }

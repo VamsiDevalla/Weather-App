@@ -1,6 +1,7 @@
 import express, { Response } from 'express';
 import path from 'node:path';
 import fs from 'node:fs';
+import dotenv from 'dotenv';
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
@@ -8,16 +9,17 @@ import { renderToString } from 'react-dom/server';
 // eslint-disable-next-line import/extensions
 import App from '../App';
 
+dotenv.config();
 const app = express();
 
-app.use(express.static('./build'));
+app.use(express.static('./'));
 
-const PORT = 3002;
+const PORT = process.env.WEB_START_ON || 4200;
 
 app.get('/', (request, response: Response) => {
   const html = renderToString(React.createElement(App));
 
-  const indexFile = path.resolve('./build/index.html');
+  const indexFile = path.resolve('./index.html');
   fs.readFile(indexFile, 'utf8', (error, data) => {
     if (error) {
       console.error('Something went wrong:', error);
