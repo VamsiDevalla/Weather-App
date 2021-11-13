@@ -6,7 +6,8 @@
           "babel-plugin-transform-remove-imports", {
             "test": "\\.(scss|css)$"
           }
-        ]
+        ],
+        "transform-inline-environment-variables"
       ],
     "presets": [
         [

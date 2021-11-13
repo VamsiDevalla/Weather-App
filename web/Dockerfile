@@ -3,9 +3,10 @@ WORKDIR /web
 COPY ["package.json", "yarn.lock", "./"]
 RUN yarn
 COPY . .
-ARG CLIENT_API_BASE_URL
-ENV API_BASE_URL=$CLIENT_API_BASE_URL
-
+ARG REACT_APP_GOOGLE_MAP_KEY
+ENV REACT_APP_GOOGLE_MAP_KEY=$REACT_APP_GOOGLE_MAP_KEY
+ARG REACT_APP_API_BASE_URL
+ENV REACT_APP_API_BASE_URL=$REACT_APP_API_BASE_URL
 RUN yarn build:ssr
 
 FROM node:14-alpine
@@ -13,7 +14,5 @@ WORKDIR /web
 COPY ["package.json", "yarn.lock", "./"]
 RUN yarn --production
 COPY --from=build-step /web/build .
-ARG WEB_START_ON
-ENV WEB_START_ON=$WEB_START_ON
-EXPOSE $WEB_START_ON
+EXPOSE 4200
 CMD ["yarn", "start:ssr"]

@@ -20,13 +20,13 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "core-js": "^3.19.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "fast-equals": "^2.0.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "regenerator-runtime": "^0.13.9",
-    "web-vitals": "^1.0.1",
-    "dotenv": "^10.0.0"
+    "web-vitals": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -45,6 +45,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "babel-plugin-transform-remove-imports": "^1.7.0",
     "babel-plugin-transform-rename-import": "^2.3.0",
     "eslint": "^7.32.0",

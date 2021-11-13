@@ -5,6 +5,7 @@ import GoogleMap from './google-map/google-map.component';
 import GoogleMapMarker from './google-map-marker/google-map-marker.component';
 import Spinner from '../lib/spinner/spinner.component';
 
+const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY;
 type MapProperties = {
   coords: google.maps.LatLngLiteral;
   zoom: number;
@@ -42,8 +43,7 @@ const Map = ({ coords, zoom, coordsHandler, zoomHandler }: MapProperties): JSX.E
 
   return (
     <div className='map-container'>
-      <Wrapper apiKey={'AIzaSyDQwesSj7xLgLTbeCDtXXZ5GteHi9tj5iA'} render={fallBack}>
-        {/* <Wrapper apiKey={"sdsjdlkfjsl"} render={fallBack}> */}
+      <Wrapper apiKey={`${GOOGLE_MAP_KEY}`} render={fallBack}>
         <GoogleMap
           center={center}
           onClick={onClick}

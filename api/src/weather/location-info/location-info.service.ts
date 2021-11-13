@@ -1,15 +1,13 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import axios from '../../axios-default';
 import LocationInfo from './location-info.model';
 
 export const getLocationInfo = async (lat: number, lng: number): Promise<LocationInfo> => {
-  const result: AxiosResponse = await axios.get(
-    'http://dataservice.accuweather.com/locations/v1/cities/geoposition/search',
-    {
-      params: {
-        apikey: 'FOpu8twQ2G6tP3edRNYSYAy3WKxHi3lc',
-        q: `${lat},${lng}`,
-      },
+  const result: AxiosResponse = await axios.get(`/locations/v1/cities/geoposition/search`, {
+    params: {
+      apikey: `${process.env.ACCU_WEATHER_KEY}`,
+      q: `${lat},${lng}`,
     },
-  );
+  });
   return result.data;
 };

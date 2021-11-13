@@ -10,7 +10,5 @@ WORKDIR /api
 COPY ["package.json", "yarn.lock", "./"]
 RUN yarn --production
 COPY --from=build-step /api/build .
-ARG API_START_ON
-ENV API_START_ON=$API_START_ON
-EXPOSE $API_START_ON
+EXPOSE 8000
 CMD ["yarn", "start"]

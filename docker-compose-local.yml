@@ -1,0 +1,50 @@
+version: '3.4'
+services:
+  api-local:
+    image: weather-api-local
+    container_name: 'weather-api-local'
+    build:
+      context: api
+      dockerfile: ./Dockerfile-local
+    restart: unless-stopped
+    environment:
+      - ACCU_WEATHER_BASE_URL=$ACCU_WEATHER_BASE_URL
+      - ACCU_WEATHER_KEY=$ACCU_WEATHER_KEY
+    volumes:
+      - ./api/:/api
+      - /api/node_modules
+    networks:
+      - weather-local
+  
+  web-local:
+    image: weather-web-local
+    container_name: 'weather-web-local'
+    build:
+      context: web
+      dockerfile: ./Dockerfile-local
+    environment:
+      - REACT_APP_GOOGLE_MAP_KEY=$GOOGLE_MAP_KEY
+      - REACT_APP_API_BASE_URL=$API_BASE_URL
+    volumes:
+      - ./web/:/web
+      - /web/node_modules
+    networks:
+      - weather-local
+  
+  nginx:
+    depends_on:
+      - api-local
+      - web-local
+    image: weather-nginx-local
+    container_name: 'weather-nginx-local'
+    restart: always
+    build:
+      dockerfile: Dockerfile-local
+      context: ./nginx
+    ports:
+      - $NGINX_DEV_LOCAL_PORT:$NGINX_DOCKER_PORT
+    networks:
+      - weather-local
+
+networks:
+  weather-local:
