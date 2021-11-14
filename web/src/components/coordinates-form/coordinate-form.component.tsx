@@ -13,13 +13,7 @@ type CoordProperties = {
 const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: CoordProperties): JSX.Element => {
   return (
     <div data-testid='coordinatesFormContainer' role='' className='coordinate-form-container'>
-      <h2
-        data-testid='coordinatesFormTitle'
-        role='heading'
-        aria-label='coordinates form'
-        id='coordFormTitle'
-        className='title'
-      >
+      <h2 data-testid='coordinatesFormTitle' role='heading' id='coordFormTitle' aria-hidden='true' className='title'>
         Coordinates
       </h2>
       <form data-testid='coordinatesForm' aria-labelledby='coordFormTitle'>
@@ -31,6 +25,7 @@ const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: C
           type='number'
           value={coords.lat.toFixed(2)}
           required
+          aria-required='true'
         />
         <FormInput
           id='lng'
@@ -39,6 +34,7 @@ const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: C
           type='number'
           value={coords.lng.toFixed(2)}
           required
+          aria-required='true'
           handleChange={event_ => setCoordinates({ ...coords, lng: Number(event_.target.value) })}
         />
         <FormInput
@@ -48,19 +44,21 @@ const CoordinateForm = ({ coords, zoom, initCoords, setCoordinates, setZoom }: C
           type='number'
           value={zoom}
           required
+          aria-required='true'
           handleChange={event_ => setZoom(Number(event_.target.value))}
         />
+        <CustomButton
+          onClick={event => {
+            event.preventDefault();
+            setCoordinates(initCoords);
+            setZoom(16);
+          }}
+          type='button'
+          aria-label='reset coordinates form'
+        >
+          RESET
+        </CustomButton>
       </form>
-      <CustomButton
-        onClick={() => {
-          setCoordinates(initCoords);
-          setZoom(16);
-        }}
-        type='button'
-        aria-label='reset coordinates'
-      >
-        RESET
-      </CustomButton>
     </div>
   );
 };

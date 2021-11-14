@@ -8,10 +8,10 @@ type WeatherProperties = {
 
 const WeatherSummary = ({ weather }: WeatherProperties): JSX.Element => {
   return (
-    <div className='weather-summary'>
-      <div className='static-text'>Right now in</div>
-      <div className='location'>{`${weather?.Area ?? ''}, ${weather?.City ?? 'unknown city'}`}</div>
-      <div className='static-text'>{`it's' ${weather?.ClimateSummary}`}</div>
+    <div role='contentinfo' aria-live='polite' className='weather-summary'>
+      <span className='static-text'>Right now in</span>
+      <span className='location'>{`${weather?.Area ?? ''}, ${weather?.City ?? 'unknown city'}`}</span>
+      <span className='static-text'>{`it's ${weather?.ClimateSummary}`}</span>
     </div>
   );
 };

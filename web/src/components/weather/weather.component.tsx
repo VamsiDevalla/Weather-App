@@ -29,7 +29,7 @@ const Weather = ({ coords }: WeatherProperties): JSX.Element => {
   }, [getWeather]);
 
   return (
-    <div className='weather-widget'>
+    <div role='feed' className='weather-widget'>
       {weather && !loading && !error ? (
         <>
           <WeatherSummary weather={weather} />
@@ -41,12 +41,20 @@ const Weather = ({ coords }: WeatherProperties): JSX.Element => {
       {loading ? (
         <>
           <Spinner />
-          <div className='loading-info-message'>Hang on, getting Weather data...🌪🏃‍♂️💨</div>
+          <div aria-live='polite' className='loading-info-message'>
+            Hang on, getting Weather data for the location<span aria-hidden='true'>...🌪🏃‍♂️💨</span>
+          </div>
         </>
       ) : (
         ''
       )}
-      {error ? <div className='error-info-message'>Sorry!! select different location or try again 😔</div> : ''}
+      {error ? (
+        <div aria-live='polite' className='error-info-message'>
+          Sorry!! select different location or try again <span aria-hidden='true'>😔</span>
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 };

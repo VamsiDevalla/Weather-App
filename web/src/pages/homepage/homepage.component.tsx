@@ -29,7 +29,7 @@ const Homepage = (): JSX.Element => {
   useEffect(setInitialCoordinates, []);
 
   return (
-    <div data-testid='homepage-container' className='homepage'>
+    <div aria-live='polite' data-testid='homepage-container' className='homepage'>
       <Weather coords={coords} />
       <CoordinateForm
         coords={coords}
