@@ -30,3 +30,12 @@ docker image rm -f $Image_Name
 docker-compose build --no-cache
 docker-compose up
 ```
+
+
+# apis used
+- Google 
+  * https://console.cloud.google.com/iam-admin/settings?project=urbnsample
+  * https://developers.google.com/maps/documentation/javascript/overview?hl=en_US
+  * https://developers.google.com/maps/documentation/javascript/react-map
+- Accuweather
+  * https://developer.accuweather.com/user/me/apps
